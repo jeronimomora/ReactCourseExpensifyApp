@@ -1,1 +1,5 @@
 node_modules/
+pubic/bundle.js
+pubic/bundle.js.map
+pubic/styles.css
+pubic/styles.css.map
