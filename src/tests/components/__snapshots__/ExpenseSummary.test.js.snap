@@ -8,7 +8,7 @@ exports[`snapshot for one expense 1`] = `
      
      
     expense
-     totaling 
+     totalling 
      
     $100.00
   </h1>
@@ -23,7 +23,7 @@ exports[`snapshot for two expenses 1`] = `
      
      
     expenses
-     totaling 
+     totalling 
      
     $200.00
   </h1>

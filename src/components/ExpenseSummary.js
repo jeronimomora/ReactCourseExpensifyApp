@@ -10,10 +10,10 @@ export const ExpenseSummary = (props) => {
 			props.expensesCount > 0 ?
 		(
 			<h1>Viewing {props.expensesCount} {' '}
-			{props.expensesCount > 1 ? 'expenses' : 'expense'} totaling {' '}
+			{props.expensesCount > 1 ? 'expenses' : 'expense'} totalling {' '}
 			{numeral(props.expensesTotal/100).format('$0,0.00')}</h1>
 		)
-		 : null
+		 : (<h1>Viewing 0 expenses totalling $0.00</h1>)
 		
 	}</div>)
 }
