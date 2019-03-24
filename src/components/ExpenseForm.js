@@ -47,7 +47,6 @@ export default class ExpenseForm extends React.Component {
 		}
 		else{
 			// clear the error
-			console.log("form submitted")
 			this.setState(() => ({error: ''}))
 			this.props.onSubmit({
 				description: this.state.description,
