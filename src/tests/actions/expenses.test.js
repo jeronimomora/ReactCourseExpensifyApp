@@ -5,7 +5,8 @@ import {
 	startAddExpense, 
 	addExpense, 
 	editExpense, 
-	removeExpense, 
+	removeExpense,
+	startRemoveExpense,
 	setExpenses,
 	startSetExpenses,
 } from '../../actions/expenses'
@@ -118,16 +119,39 @@ test('should set up set expense action object with data', () => {
 	})
 })
 
-test('should fetch data from firebase', async () => {
+test('should fetch data from firebase', (done) => {
 
 	const store = createMockStore({})
 
-	await store.dispatch(startSetExpenses()).then(() => {
+	store.dispatch(startSetExpenses()).then(() => {
 		const actions = store.getActions()
 		expect(actions[0]).toEqual({
 			type: 'SET_EXPENSES',
 			expenses
 		})
+	})
+
+	done()
+
+})
+
+test('should remove expense from firebase', (done) => {
+	const store = createMockStore({})
+
+	const id = expenses[2].id
+
+	store.dispatch(startRemoveExpense({ id })).then(() => {
+		const actions = store.getActions()
+		expect(actions[0]).toEqual({
+			type: 'REMOVE_EXPENSE',
+			id
+		})
+
+		return database.ref(`expenses/${id}`).once('value')
+
+	}).then((snapshot) => {
+		expect(snapshot.val()).toBeFalsy()
+		done()
 	})
 
 })
